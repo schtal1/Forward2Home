@@ -81,7 +81,12 @@ app.get('/getip', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!').end();
+  getIP().then(result=>{
+    if(result.ok){
+      res.status(200).send('<html><script>window.location.href="http://' +result.data+ '"</script></html>');
+    }else{
+      res.status(200).send('error : '+result.data).end();
+    }
 });
 
 app.get('/r1', (req, res) => {
