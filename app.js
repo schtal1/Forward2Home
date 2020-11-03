@@ -87,6 +87,7 @@ app.get('/', (req, res) => {
     }else{
       res.status(200).send('error : '+result.data).end();
     }
+  });
 });
 
 app.get('/r1', (req, res) => {
