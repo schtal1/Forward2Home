@@ -1,0 +1,12 @@
+The app is deployed to google app engine by using gcloud
+
+to install
+https://cloud.google.com/sdk/docs/quickstart
+
+commands to run (in the cloned folder):
+
+deploy: 
+gcloud app deploy
+
+open app:
+gcloud app browse

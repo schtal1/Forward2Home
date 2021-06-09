@@ -116,7 +116,29 @@ app.get('/getip', async (req, res) => {
   }
 });
 
+app.get('/getgrow', async (req, res) => {
+  try{
+    const ip= await getIP();
+    res.status(200).send('http://' +ip+ '/grow').end();
+  }catch(err){
+    res.status(200).send('err : '+ err).end();
+  }
+  
+});
+
+
 app.get('/', async (req, res) => {
+  try{
+    const ip= await getIP();
+    res.status(200).send('<html><script>function go(){window.location.href="http://' +ip + '";} \n'+
+    'function go2(){window.location.href="http://' +ip + '/grow";} '+
+    '</script><button onclick="go()">Go To ip:'+ip+'</button><button onclick="go2()">Go To grow:'+ip+'/grow</button></html>');
+  }catch(err){
+    res.status(200).send('err : '+ err).end();
+  }
+});
+
+app.get('/direct', async (req, res) => {
   try{
     const ip= await getIP();
     res.status(200).send('<html><script>window.location.href="http://' +ip+ '"</script></html>');
